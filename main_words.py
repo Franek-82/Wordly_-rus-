@@ -16,7 +16,7 @@ class MyWidget(QWidget):
             self.lines = tuple(filter(lambda x: len(x) < 7, self.lines))
             self.word_x = random.choice(self.lines)
             print(self.word_x)  # "газета"
-        font = QFont('Consolas', 18)  # Courier
+        font = QFont('Consolas', 18)  # Альтернатива: Courier
         self.setFont(font)
         self.le = len(self.word_x)
         self.line = QLineEdit()
