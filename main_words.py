@@ -16,15 +16,18 @@ class MyWidget(QWidget):
             self.lines = tuple(filter(lambda x: len(x) < 7, self.lines))
             self.word_x = random.choice(self.lines)
             print(self.word_x)  # "газета"
-        font = QFont('Consolas', 18)  # Альтернатива: Courier
+        font = QFont('Courier', 23)
         self.setFont(font)
         self.le = len(self.word_x)
         self.line = QLineEdit()
         self.q_text = QTextEdit()
         self.q_text.setReadOnly(True)
+        self.q_text.setStyleSheet("letter-spacing: 50px; font-size: 32px; padding-left: 15px")
+        self.q_text.setLineWrapMode(QTextEdit.NoWrap)  # без переноса на след. строку
+        self.q_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.butt = QPushButton("Вы угадали слово")
         self.butt.setVisible(False)
-        self.width = self.le * 17  # Изменяем ширину в зависимости от количества букв
+        self.width = self.le * 65  # Изменяем ширину в зависимости от количества букв
         self.q_text.setFixedWidth(self.width)
         self.line.setFixedWidth(self.width)
         self.line.setMaxLength(self.le)
@@ -35,7 +38,10 @@ class MyWidget(QWidget):
         self.list_lbl = []
         for i in range(self.le):
             self.label = QLabel()
-            self.label.setStyleSheet("border: 1px solid black; padding: 13px;font-size: 24px; color: red;")
+            self.label.setFixedSize(60, 60)
+            self.label.setAlignment(Qt.AlignCenter)
+            self.label.setStyleSheet(
+                "border: 1px solid black; font-size: 32px;")
             self.hbox.addWidget(self.label, alignment=QtCore.Qt.AlignTop)
             self.list_lbl.append(self.label)
         self.vbox.addWidget(self.q_text, alignment=QtCore.Qt.AlignHCenter)
@@ -81,7 +87,7 @@ class MyWidget(QWidget):
                 format.setForeground(color)
                 cursor.mergeCharFormat(format)
                 cursor.insertText(char)
-                print(self.list_lbl[i])
+                # print(self.list_lbl[i])
                 self.list_lbl[i].setText(char)
             elif i in self.blue.keys():
                 color = Qt.blue
