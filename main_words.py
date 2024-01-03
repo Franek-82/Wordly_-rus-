@@ -11,7 +11,7 @@ class MyWidget(QWidget):
 
     def __init__(self):
         super().__init__()
-        with open("C:/Users/rick1/PycharmProjects/main.py/Wordly/russian_nouns.txt", "r", encoding="utf-8") as file:
+        with open("C:/Users/rick1/PycharmProjects/main.py/Wordly/my_nouns.txt", "r", encoding="utf-8") as file:
             self.lines = tuple(map(lambda x: x.rstrip(), file.readlines()))
             self.lines = tuple(filter(lambda x: len(x) < 7, self.lines))
             self.word_x = random.choice(self.lines)
