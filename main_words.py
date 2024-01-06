@@ -16,18 +16,18 @@ class MyWidget(QWidget):
             self.lines = tuple(filter(lambda x: len(x) < 7, self.lines))
             self.word_x = random.choice(self.lines)
             print(self.word_x)  # "газета"
-        font = QFont('Courier', 23)
+        font = QFont('Courier', 24)
         self.setFont(font)
         self.le = len(self.word_x)
         self.line = QLineEdit()
         self.q_text = QTextEdit()
         self.q_text.setReadOnly(True)
-        self.q_text.setStyleSheet("letter-spacing: 50px; font-size: 32px; padding-left: 15px")
+        self.q_text.setStyleSheet("letter-spacing: 50px; font-family: Courier New; font-size: 33px; padding-left: 15px")
         self.q_text.setLineWrapMode(QTextEdit.NoWrap)  # без переноса на след. строку
         self.q_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.butt = QPushButton("Вы угадали слово")
         self.butt.setVisible(False)
-        self.width = self.le * 65  # Изменяем ширину в зависимости от количества букв
+        self.width = self.le * 66  # Изменяем ширину в зависимости от количества букв
         self.q_text.setFixedWidth(self.width)
         self.line.setFixedWidth(self.width)
         self.line.setMaxLength(self.le)
